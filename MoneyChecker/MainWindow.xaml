@@ -1,0 +1,35 @@
+﻿<Window x:Class="MoneyChecker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MoneyChecker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid  x:Name="MainWindowGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Height="20">
+            <MenuItem Header="Файл" FontSize="14">
+                <MenuItem Header="Новая БД"></MenuItem>
+                <MenuItem Header="Открыть БД"></MenuItem>
+                <MenuItem Header="Сохранить БД"></MenuItem>
+                <MenuItem Header="Сохранить как"></MenuItem>
+                <Separator/>
+                <MenuItem Header="Безопасность"></MenuItem>
+                <MenuItem Header="Выход"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Правка" FontSize="14">
+
+            </MenuItem>
+            <MenuItem Header="Вид" FontSize="14">
+
+            </MenuItem>
+        </Menu>
+        
+        <StatusBar Grid.Row="2" Grid.Column="0" Background="Red"></StatusBar>
+    </Grid>
+</Window>
