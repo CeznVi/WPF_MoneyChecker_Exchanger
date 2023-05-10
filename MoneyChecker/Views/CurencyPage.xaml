@@ -21,11 +21,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="Title"
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" x:Name="Title"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                        FontSize="20" TextAlignment="Center" TextWrapping="Wrap"
                        Text="Калькулятор валют"/>
@@ -33,19 +34,24 @@
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                        FontSize="20" TextAlignment="Center" TextWrapping="Wrap"
                        Text="У меня есть:"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" x:Name="ValutWantBye"
+        <TextBlock Grid.Row="1" Grid.Column="3" x:Name="ValutWantBye"
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                        FontSize="20" TextAlignment="Center" TextWrapping="Wrap"
                        Text="Я получу:"/>
         <ComboBox x:Name="ComboBox_HaveValut" Grid.Row="2" Grid.Column="1" Margin="3"/>
-        <ComboBox x:Name="ComboBox_WantByeValut" Grid.Row="2" Grid.Column="2" Margin="3"/>
+        <ComboBox x:Name="ComboBox_WantByeValut" Grid.Row="2" Grid.Column="3" Margin="3"/>
         <TextBox x:Name="TextBox_HaveValut" Grid.Row="3" Grid.Column="1" Margin="3"/>
-        <TextBox x:Name="TextBox_WantByeValut" Grid.Row="3" Grid.Column="2" Margin="3" IsEnabled="False"/>
+        <TextBox x:Name="TextBox_WantByeValut" Grid.Row="3" Grid.Column="3" Margin="3" IsEnabled="False"/>
+
+        <Button x:Name="Button_ChangeValute" Grid.Row="2" Grid.Column="2" Margin="0,3,0,3" >
+            <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;&gt;"/>
+        </Button>
+        
         <Button x:Name="Button_Calculate" Grid.Row="4" 
-                Grid.Column="1" Grid.ColumnSpan="2" Margin="15, 3, 15, 3"
+                Grid.Column="1" Grid.ColumnSpan="3" Margin="15, 3, 15, 3"
                 Background="RosyBrown">
-            <TextBlock FontSize="16" FontFamily="Segoe Script" Foreground="Black"
-                Text="Расчитать"/>
+            <TextBlock FontSize="16" FontFamily="Segoe Script" 
+                       Foreground="Black" Text="Расчитать"/>
         </Button>
         
         
