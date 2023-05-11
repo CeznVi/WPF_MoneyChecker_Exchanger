@@ -117,15 +117,19 @@ namespace MoneyChecker.Commands.CurencyConverter
         public double CalculateWithoutDate(double count, string nameMyValut, string nameWantValut)
         {
             double rezult;
-            double wantValut = _currencies.FirstOrDefault
-                (v => v.Txt == nameWantValut.Split('|')[0].Trim()).Rate;
+            double wantValut;
 
             if (nameMyValut == "Гривні")
             {
+                wantValut = _currencies.FirstOrDefault
+                        (v => v.Txt == nameWantValut.Split('|')[0].Trim()).Rate;
                 rezult = count / wantValut;
+
             }
             else
             {
+                wantValut = _currencies.FirstOrDefault
+                        (v => v.Txt == nameMyValut.Split('|')[0].Trim()).Rate;
                 rezult = count * wantValut;
             }
                         

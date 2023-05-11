@@ -38,7 +38,8 @@ namespace MoneyChecker.Views
 
         private void InitialInterface()
         {
-            ComboBox_HaveValut.Items.Add("Гривні");
+            
+            ComboBox_HaveValut.ItemsSource = new List<string>() { "Гривні" }; 
             ComboBox_WantByeValut.ItemsSource = _curencyConverter.GetCurrenciesName();
    
         }

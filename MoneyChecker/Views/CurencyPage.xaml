@@ -14,6 +14,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition/>
 
@@ -47,9 +48,19 @@
             <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;&gt;"/>
         </Button>
 
-        <Button x:Name="Button_Calculate" Grid.Row="4" 
+        <CheckBox x:Name="CheckBox_UseDate" Grid.Row="4" Grid.Column="1"
+                  VerticalAlignment="Center">
+            <TextBlock FontSize="12" Foreground="Black" 
+                       VerticalAlignment="Center" Text="Учитывать дату"/>
+        </CheckBox>
+
+        <TextBox x:Name="TextBox_InputDate" Grid.Row="4" Grid.Column="1" 
+                 Grid.ColumnSpan="2"  HorizontalAlignment="Right" 
+                 Width="100" Margin="3"/>
+
+        <Button x:Name="Button_Calculate" Grid.Row="5" 
                 Grid.Column="1" Grid.ColumnSpan="3" Margin="15, 3, 15, 3"
-                Background="RosyBrown" Click="Button_Calculate_Click">
+                Background="LightSeaGreen" Click="Button_Calculate_Click">
             <TextBlock FontSize="16" FontFamily="Segoe Script" 
                        Foreground="Black" Text="Расчитать"/>
         </Button>
