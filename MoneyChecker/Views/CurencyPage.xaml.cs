@@ -52,9 +52,14 @@ namespace MoneyChecker.Views
                     && TextBox_HaveValut.Text != string.Empty)
                 {
                     if (CheckBox_UseDate.IsChecked == true)
-                        _curencyConverter.UpdCurrenciesByDate(DateTime.Now);
+                    {
+                        if(Calendar.SelectedDate <= DateTime.Now)
+                            _curencyConverter.UpdCurrenciesByDate(Calendar.SelectedDate.Value);
+                    }
                     else
+                    {
                         _curencyConverter.UpdCurrenciesToCurrentDate();
+                    }
 
                     TextBox_WantByeValut.Text =
                         _curencyConverter.CalculateWithoutDate(

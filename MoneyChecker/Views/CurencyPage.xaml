@@ -20,11 +20,11 @@
 
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" x:Name="Title"
@@ -48,15 +48,25 @@
             <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;&gt;"/>
         </Button>
 
-        <CheckBox x:Name="CheckBox_UseDate" Grid.Row="4" Grid.Column="1"
-                  VerticalAlignment="Center">
+        <CheckBox x:Name="CheckBox_UseDate" Grid.Row="2" Grid.Column="0"
+                  VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock FontSize="12" Foreground="Black" 
                        VerticalAlignment="Center" Text="Учитывать дату"/>
         </CheckBox>
 
-        <TextBox x:Name="TextBox_InputDate" Grid.Row="4" Grid.Column="1" 
+        <Calendar x:Name="Calendar" Grid.Column="0" Grid.Row="3" Grid.RowSpan="4" 
+                  HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+
+        <!--<CheckBox x:Name="CheckBox_UseDate" Grid.Row="4" Grid.Column="1"
+                  VerticalAlignment="Center">
+            <TextBlock FontSize="12" Foreground="Black" 
+                       VerticalAlignment="Center" Text="Учитывать дату"/>
+        </CheckBox>-->
+
+        <!--<TextBox x:Name="TextBox_InputDate" Grid.Row="4" Grid.Column="1" 
                  Grid.ColumnSpan="2"  HorizontalAlignment="Right" 
-                 Width="100" Margin="3"/>
+                 Width="100" Margin="3"/>-->
 
         <Button x:Name="Button_Calculate" Grid.Row="5" 
                 Grid.Column="1" Grid.ColumnSpan="3" Margin="15, 3, 15, 3"
@@ -64,8 +74,6 @@
             <TextBlock FontSize="16" FontFamily="Segoe Script" 
                        Foreground="Black" Text="Расчитать"/>
         </Button>
-
-
-
+        
     </Grid>
 </Page>

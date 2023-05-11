@@ -61,6 +61,8 @@ namespace MoneyChecker.Commands.CurencyConverter
         /// </summary>
         public void UpdCurrenciesToCurrentDate()
         {
+            _currencies.Clear();
+
             HttpClient client = new HttpClient();
 
             HttpResponseMessage response = client.GetAsync(Uri).Result;
@@ -76,6 +78,8 @@ namespace MoneyChecker.Commands.CurencyConverter
         public void UpdCurrenciesByDate(DateTime date)
         {
             _date = date;
+            _currencies.Clear();
+
 
             HttpClient client = new HttpClient();
 
