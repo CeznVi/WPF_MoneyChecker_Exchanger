@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace MoneyChecker.TabControls
 {
@@ -62,6 +64,7 @@ namespace MoneyChecker.TabControls
         public TabViewController()
         {
             _bodyControl = new Grid();
+
             RowDefinition rowsButtons = new RowDefinition();
             rowsButtons.Height = new GridLength(60, GridUnitType.Pixel);
             
@@ -71,6 +74,7 @@ namespace MoneyChecker.TabControls
             _bodyControl.ColumnDefinitions.Add(new ColumnDefinition());
 
             _toolBar = new ToolBar();
+
             Grid.SetRow(_toolBar, 0);
             Grid.SetColumn(_toolBar, 0);
 
