@@ -38,10 +38,10 @@ namespace MoneyChecker.Commands.CurencyConverter
                     return _uri + _endUri; 
                 else
                     return _uri +
-                        (_date.Value.Day.ToString().Length == 1 ? "0" + _date.Value.Day.ToString() : _date.Value.Day.ToString()) + 
-                        (_date.Value.Month.ToString().Length == 1 ? "0" + _date.Value.Month.ToString() : _date.Value.Month.ToString()) + 
-                        _date.Value.Year+
-                        _endUri;
+                           _date.Value.Year +
+                           (_date.Value.Month.ToString().Length == 1 ? "0" + _date.Value.Month.ToString() : _date.Value.Month.ToString()) +
+                           (_date.Value.Day.ToString().Length == 1 ? "0" + _date.Value.Day.ToString() : _date.Value.Day.ToString()) + 
+                            _endUri;
             } 
         }
         /// <summary>

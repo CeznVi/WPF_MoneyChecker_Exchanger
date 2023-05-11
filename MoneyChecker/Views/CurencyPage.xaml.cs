@@ -50,11 +50,22 @@ namespace MoneyChecker.Views
                 if (ComboBox_HaveValut.SelectedItem.ToString() != string.Empty
                     && ComboBox_WantByeValut.SelectedItem.ToString() != string.Empty
                     && TextBox_HaveValut.Text != string.Empty)
-                        TextBox_WantByeValut.Text = 
-                            _curencyConverter.CalculateWithoutDate(
-                                double.Parse(TextBox_HaveValut.Text),
-                                ComboBox_HaveValut.SelectedItem.ToString(),
-                                ComboBox_WantByeValut.SelectedItem.ToString()).ToString();
+                {
+                    if (CheckBox_UseDate.IsChecked == true)
+                        _curencyConverter.UpdCurrenciesByDate(DateTime.Now);
+                    else
+                        _curencyConverter.UpdCurrenciesToCurrentDate();
+
+                    TextBox_WantByeValut.Text =
+                        _curencyConverter.CalculateWithoutDate(
+                            double.Parse(TextBox_HaveValut.Text),
+                            ComboBox_HaveValut.SelectedItem.ToString(),
+                            ComboBox_WantByeValut.SelectedItem.ToString()).ToString();
+
+
+                }    
+                    
+
         }
 
         private void TextBox_HaveValut_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -94,8 +105,6 @@ namespace MoneyChecker.Views
 
                     ComboBox_HaveValut.ItemsSource = source1;
                     ComboBox_HaveValut.SelectedItem = temp1;
-
-                    //ComboBox_HaveValut.ItemsSource = _curencyConverter.GetCurrenciesName();
 
                 }
         }
