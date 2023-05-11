@@ -10,15 +10,26 @@ namespace MoneyChecker.Commands.CurencyConverter
 {
     class CurencyConverter
     {
-        private List<Currency> _currencies = new List<Currency>();
-
-        private DateTime? _date = null;
-
+        /* -------------------------- Настройки -------------------------- */
 
         private string _uri = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=";
         private string _endUri = "&json";
-      
-        public string Uri 
+
+        /* -------------------------- Переменные -------------------------- */
+        /// <summary>
+        /// Хранит сущности Currency
+        /// </summary>
+        private List<Currency> _currencies = new List<Currency>();
+        /// <summary>
+        /// Для хранение даты курса
+        /// </summary>
+        private DateTime? _date = null;
+
+        /* -------------------------- Свойства -------------------------- */
+        /// <summary>
+        /// Свойство для изменения адресса данных в завистмости от даты
+        /// </summary>
+        private string Uri 
         { 
             get 
             { 
@@ -32,7 +43,9 @@ namespace MoneyChecker.Commands.CurencyConverter
                         _endUri;
             } 
         }
-
+        /// <summary>
+        /// Свойство для возврата списка сущности Currency
+        /// </summary>
         public List<Currency> Currencies
         { get 
             {
@@ -40,7 +53,11 @@ namespace MoneyChecker.Commands.CurencyConverter
             } 
         }
 
-
+        /* -------------------------- Методы -------------------------- */
+        /* ---------Обновление данных */
+        /// <summary>
+        /// Обновить курс валют на текущую дату
+        /// </summary>
         public void UpdCurrenciesToCurrentDate()
         {
             HttpClient client = new HttpClient();
@@ -51,7 +68,10 @@ namespace MoneyChecker.Commands.CurencyConverter
 
             _currencies = JsonConvert.DeserializeObject<List<Currency>>(responceCurrencies);
         }
-
+        /// <summary>
+        /// Обновить курс валют на указаную дату
+        /// </summary>
+        /// <param name="date">Дата на какую обновлять курс</param>
         public void UpdCurrenciesByDate(DateTime date)
         {
             _date = date;
@@ -64,6 +84,45 @@ namespace MoneyChecker.Commands.CurencyConverter
 
             _currencies = JsonConvert.DeserializeObject<List<Currency>>(responceCurrencies);
         }
+
+        /* --------- Возврат данных*/
+        /// <summary>
+        /// Возвращает список валют 
+        /// </summary>
+        /// <returns>List<string>Currencies.name</returns>
+        public List<string> GetCurrenciesName() 
+        { 
+            List<string> list = new List<string>();
+
+            foreach (Currency currency in _currencies) 
+            {
+                list.Add(currency.Txt);
+            }
+
+            return list;
+        }
+
+        /* ---------Расчит стоимости валют */
+
+        public double CalculateWithoutDate(double count, string nameMyValut, string nameWantValut)
+        {
+            double rezult;
+            double wantValut;
+
+            //if(nameMyValut == "Гривні")
+            //{
+                wantValut = _currencies.FirstOrDefault(v => v.Txt == nameWantValut).Rate;
+                    
+                rezult = count * wantValut;
+            //}
+            //else if(nameWantValut == "Гривні")
+            //{
+
+            //}
+
+            return rezult;
+        }
+
 
     }
 }

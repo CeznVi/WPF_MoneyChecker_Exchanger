@@ -30,7 +30,24 @@ namespace MoneyChecker.Views
             _curencyConverter = new CurencyConverter();
 
             _curencyConverter.UpdCurrenciesToCurrentDate();
-            var cur = _curencyConverter.Currencies;
+
+            InitialInterface();
+
+        }
+
+        private void InitialInterface()
+        {
+            ComboBox_HaveValut.Items.Add("Гривні");
+            ComboBox_WantByeValut.ItemsSource = _curencyConverter.GetCurrenciesName();
+        }
+
+        private void Button_Calculate_Click(object sender, RoutedEventArgs e)
+        {
+            _curencyConverter.CalculateWithoutDate(
+                double.Parse(TextBox_HaveValut.Text),
+                ComboBox_HaveValut.s
+
+                );
         }
     }
 }
