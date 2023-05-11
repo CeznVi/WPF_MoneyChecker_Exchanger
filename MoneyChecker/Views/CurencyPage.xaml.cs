@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -39,15 +40,63 @@ namespace MoneyChecker.Views
         {
             ComboBox_HaveValut.Items.Add("Гривні");
             ComboBox_WantByeValut.ItemsSource = _curencyConverter.GetCurrenciesName();
+   
         }
 
         private void Button_Calculate_Click(object sender, RoutedEventArgs e)
         {
-            _curencyConverter.CalculateWithoutDate(
-                double.Parse(TextBox_HaveValut.Text),
-                ComboBox_HaveValut.s
+            if(ComboBox_HaveValut.SelectedItem != null && ComboBox_WantByeValut.SelectedItem != null)
+                if (ComboBox_HaveValut.SelectedItem.ToString() != string.Empty
+                    && ComboBox_WantByeValut.SelectedItem.ToString() != string.Empty
+                    && TextBox_HaveValut.Text != string.Empty)
+                        TextBox_WantByeValut.Text = 
+                            _curencyConverter.CalculateWithoutDate(
+                                double.Parse(TextBox_HaveValut.Text),
+                                ComboBox_HaveValut.SelectedItem.ToString(),
+                                ComboBox_WantByeValut.SelectedItem.ToString()).ToString();
+        }
 
-                );
+        private void TextBox_HaveValut_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+
+            if (!Char.IsDigit(e.Text, 0) && (e.Text != ",")) 
+                e.Handled = true;
+            else
+                if ((e.Text == ",") && ((tb.Text.IndexOf(",") != -1) || (tb.Text == "")))
+                { 
+                    e.Handled = true; 
+                }
+        }
+
+        private void Button_ChangeValute_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboBox_HaveValut.SelectedItem != null && ComboBox_WantByeValut.SelectedItem != null)
+                if (ComboBox_HaveValut.SelectedItem.ToString() != string.Empty
+                    && ComboBox_WantByeValut.SelectedItem.ToString() != string.Empty)
+                {
+
+                    string temp1 = ComboBox_WantByeValut.SelectedItem.ToString();
+                    var source1 = ComboBox_WantByeValut.ItemsSource;
+                    ComboBox_WantByeValut.SelectedItem = null;
+                    ComboBox_WantByeValut.ItemsSource = null;
+
+
+                    string temp2 = ComboBox_HaveValut.SelectedItem.ToString();
+                    var source2 = ComboBox_HaveValut.ItemsSource;
+                    ComboBox_HaveValut.SelectedItem = null;
+                    ComboBox_HaveValut.ItemsSource = null;
+
+
+                    ComboBox_WantByeValut.ItemsSource = source2;
+                    ComboBox_WantByeValut.SelectedItem = temp2;
+
+                    ComboBox_HaveValut.ItemsSource = source1;
+                    ComboBox_HaveValut.SelectedItem = temp1;
+
+                    //ComboBox_HaveValut.ItemsSource = _curencyConverter.GetCurrenciesName();
+
+                }
         }
     }
 }

@@ -38,12 +38,12 @@
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                        FontSize="20" TextAlignment="Center" TextWrapping="Wrap"
                        Text="Я получу:"/>
-        <ComboBox x:Name="ComboBox_HaveValut" Grid.Row="2" Grid.Column="1" Margin="3" IsReadOnly="True"/>
+        <ComboBox x:Name="ComboBox_HaveValut" Grid.Row="2" Grid.Column="1" Margin="3"/>
         <ComboBox x:Name="ComboBox_WantByeValut" Grid.Row="2" Grid.Column="3" Margin="3"/>
-        <TextBox x:Name="TextBox_HaveValut" Grid.Row="3" Grid.Column="1" Margin="3"/>
+        <TextBox x:Name="TextBox_HaveValut" Grid.Row="3" Grid.Column="1" Margin="3" PreviewTextInput="TextBox_HaveValut_PreviewTextInput"/>
         <TextBox x:Name="TextBox_WantByeValut" Grid.Row="3" Grid.Column="3" Margin="3" IsReadOnly="True"/>
 
-        <Button x:Name="Button_ChangeValute" Grid.Row="2" Grid.Column="2" Margin="0,3,0,3" >
+        <Button x:Name="Button_ChangeValute" Grid.Row="2" Grid.Column="2" Margin="0,3,0,0" Height="24" VerticalAlignment="Top" Click="Button_ChangeValute_Click" >
             <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Text="&lt;&gt;"/>
         </Button>
 

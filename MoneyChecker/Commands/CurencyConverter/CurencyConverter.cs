@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MoneyChecker.Commands.CurencyConverter
 {
@@ -93,34 +94,42 @@ namespace MoneyChecker.Commands.CurencyConverter
         public List<string> GetCurrenciesName() 
         { 
             List<string> list = new List<string>();
+            string name;
 
             foreach (Currency currency in _currencies) 
             {
-                list.Add(currency.Txt);
+                name = $"{currency.Txt} | {currency.Cc}";
+
+                list.Add(name);
             }
 
             return list;
         }
 
         /* ---------Расчит стоимости валют */
-
+        /// <summary>
+        /// Расчет стоимости валюты без учета даты
+        /// </summary>
+        /// <param name="count">количество</param>
+        /// <param name="nameMyValut"></param>
+        /// <param name="nameWantValut"></param>
+        /// <returns></returns>
         public double CalculateWithoutDate(double count, string nameMyValut, string nameWantValut)
         {
             double rezult;
-            double wantValut;
+            double wantValut = _currencies.FirstOrDefault
+                (v => v.Txt == nameWantValut.Split('|')[0].Trim()).Rate;
 
-            //if(nameMyValut == "Гривні")
-            //{
-                wantValut = _currencies.FirstOrDefault(v => v.Txt == nameWantValut).Rate;
-                    
+            if (nameMyValut == "Гривні")
+            {
+                rezult = count / wantValut;
+            }
+            else
+            {
                 rezult = count * wantValut;
-            //}
-            //else if(nameWantValut == "Гривні")
-            //{
-
-            //}
-
-            return rezult;
+            }
+                        
+            return Math.Round(rezult, 3); 
         }
 
 
